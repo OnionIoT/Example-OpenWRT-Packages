@@ -11,11 +11,17 @@ int main(void) {
     CURL *curl;
     CURLcode res;
 
+    // Set the URL to a variable
+    const char *url = "https://dummyapi.online/api/todos/2";
+
+    // Let the user know what the program is doing
+    printf("Fetching To Do from '%s'\n", url);
+
     // Initialize curl
     curl = curl_easy_init();
     if(curl) {
         // Set the URL to fetch
-        curl_easy_setopt(curl, CURLOPT_URL, "http://example.com");
+        curl_easy_setopt(curl, CURLOPT_URL, url);
 
         // Set the write callback function
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
@@ -30,6 +36,8 @@ int main(void) {
 
         // Cleanup curl
         curl_easy_cleanup(curl);
+    } else {
+        fprintf(stderr, "Failed to initialize CURL.\n");
     }
     return 0;
 }
