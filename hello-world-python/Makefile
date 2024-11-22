@@ -1,4 +1,4 @@
-## sample package makefile for a C program
+## sample package makefile for a Python program
 
 include $(TOPDIR)/rules.mk
 
@@ -15,6 +15,7 @@ $(call include_mk, python3-package.mk)
 # general package definition
 #   the DEPENDS line determines the dependencies of the package
 #   OPKG will try to install the dependencies when installing this pacakge
+# Python programs should depend on python3-light - that makes sure python is installed as well
 define Package/$(PKG_NAME)
 	SECTION:=utils
 	CATEGORY:=Utilities
